@@ -11,12 +11,15 @@ const router = new Router({
       name: 'root',
       component: () => import('@/pages/root/index'),
       beforeEnter: (to, from, next) => {
-        // console.log('beforeEnter root: ', to, from);
+        // console.log('beforeEnter root: ', to);
 
-        next((vm) => {
-          vm.isRoot = to.fullPath==='/'
-        })
-      }
+        // next((vm) => {
+        //   console.log(vm);
+        //   vm.isRoot = to.fullPath==='/'
+        // })
+
+        next()
+      },
     },
     {
       path: '/css/loading',
@@ -28,6 +31,7 @@ const router = new Router({
 
 // 判断是否是根页面
 // router.beforeEach((to, from, next)=>{
+  
 //   next((vm)=> {
 //     console.log(to, from);
     
