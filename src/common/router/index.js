@@ -25,6 +25,11 @@ const router = new Router({
       path: '/css/loading',
       name: 'loading',
       component: () => import('@/pages/css/loading')
+    },
+    {
+      path: '/css/bubble/bottom-left',
+      name: 'bubble',
+      component: () => import('@/pages/css/bubble/bottom-left')
     }
   ],
 })

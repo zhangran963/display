@@ -36,6 +36,7 @@ export default {
 $height: 4rem;
 #app{
     nav{
+        user-select: none;
         background-color: darkcyan;
         color: white;
         height: $height;
@@ -47,11 +48,15 @@ $height: 4rem;
 
         .left, .center, .right{
             line-height: $height;
-            min-width: $height;
+            width: $height;
+            min-width: $height !important;
             color: white;
         }
         .left{
             text-align: left;
+            background-color: transparent;
+            outline: 0;
+            border: 0;
         }
         .center{
             font-size: 1.2rem;
