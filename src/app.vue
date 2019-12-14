@@ -1,10 +1,13 @@
 <template>
     <div id="app">
-        <nav>
-            <button class="left" @click.stop="turnBack" :style="{visibility: isRoot?'hidden':'visible'}">返回</button>
-            <h4 class="center">display</h4>
-            <button class="right" >&nbsp;</button>
-        </nav>
+        <div class="header">
+            <nav class="nav" :class="{'fixed': isTop }" ref="nav">
+                <button class="left" @click.stop="turnBack" :style="{visibility: isRoot?'hidden':'visible'}">返回</button>
+                <h4 class="center">display</h4>
+                <button class="right" >&nbsp;</button>
+            </nav>
+        </div>
+        
         <router-view></router-view>
     </div>
 </template>
@@ -13,10 +16,19 @@
 export default {
     name: 'root',
     data(vm){
-        // console.log(location.pathname);
-        
         return {
-            isRoot: true
+            isRoot: true,
+            isTop: false,
+        }
+    },
+    created(){
+        window.onscroll = () => {
+            let {top} = this.$refs.nav.getBoundingClientRect()
+            if(top <= 0){
+                this.isTop = true
+            }else{
+                this.isTop = false
+            }
         }
     },
     methods: {
@@ -35,6 +47,9 @@ export default {
 <style lang="scss" scoped>
 $height: 4rem;
 #app{
+    .header{
+        height: $height;
+    }
     nav{
         user-select: none;
         background-color: darkcyan;
@@ -45,6 +60,16 @@ $height: 4rem;
         flex-direction: row;
         align-items: stretch;
         justify-content: space-between;
+
+        
+
+        &.fixed{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
 
         .left, .center, .right{
             line-height: $height;

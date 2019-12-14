@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
+import { modeRouter } from './mode'
 
 const router = new Router({
   mode: 'history',
@@ -30,7 +31,8 @@ const router = new Router({
       path: '/css/bubble/bottom-left',
       name: 'bubble',
       component: () => import('@/pages/css/bubble/bottom-left')
-    }
+    },
+    ...modeRouter
   ],
 })
 
