@@ -1,7 +1,7 @@
 <template>
     <ul class="page-root">
         <li @click="$router.push('/css/bubble/bottom-left')"><button>bubble/bottom-left</button></li>
-        <li @click="$router.push('/css/loading')"><button>loading</button></li>
+        <li @click="$router.push('/css/icon/spade')"><button>spade(铁锹)</button></li>
         <li @click="$router.push('/css/loading')"><button>loading</button></li>
         <li @click="$router.push('/css/loading')"><button>loading</button></li>
         <li @click="$router.push('/css/loading')"><button>loading</button></li>

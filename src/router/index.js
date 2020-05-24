@@ -10,7 +10,7 @@ const router = new Router({
     {
       path: '/',
       name: 'root',
-      component: () => import('@/pages/root/index'),
+      component: () => import('@/pages/root'),
       beforeEnter: (to, from, next) => {
         // console.log('beforeEnter root: ', to);
 
@@ -32,9 +32,21 @@ const router = new Router({
       name: 'bubble',
       component: () => import('@/pages/css/bubble/bottom-left')
     },
-    ...modeRouter
+    {
+      path: "/css/icon",
+      component: () => import("@/pages/css/icon/index"),
+      children: require('./icon').default,
+    },
+    ...modeRouter,
+    {
+      path: "*",
+      name: "404",
+      component: () => import('@/pages/404')
+    }
   ],
 })
+
+console.log('* ', require('./icon').default)
 
 // 判断是否是根页面
 // router.beforeEach((to, from, next)=>{
